@@ -1,0 +1,7 @@
+<% data.userTxt.forEach(txt => { &>
+        <li> <input type="checkbox" name="" id=""><%= txt %>
+    <%}); %>
+    <% if (locals.data.userTxt[last]) {%>
+    <li> <input type="checkbox" name="" id=""><%= data.userTxt[last] %>
+    </li>
+    <% } %>

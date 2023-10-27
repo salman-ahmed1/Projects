@@ -1,0 +1,19 @@
+<%- include('copy/header.ejs') %>
+
+<div class="bg">
+<ul>
+ 
+  <% if (locals.data.array) { for ( var i = 0; i < data.array.length; i++) { %> 
+<div class="list-inside">
+  <li><input style="margin-right: 0.8rem;" type="checkbox" class="checkbox" name="" id="" /><%= data.array[i] %></li>
+</div>
+  <% }} %>
+</ul>
+
+<form action="<%= data.addr %>" method="post">
+  <input style="background-color: rgb(204, 217, 231); border-width: 0 0 2px 0; outline: 0;" placeholder="Add Your Task" type="text" name="txt" /> <input style="border-radius: 50%; background-color: rgb(42, 166, 238); color: white; border: 0; font-size: 2rem; padding: 0 0.8rem; aspect-ratio: 1/1; " type="submit" value="+" />
+</form>
+
+</div>
+</div>
+<%- include("copy/footer.ejs")%>
