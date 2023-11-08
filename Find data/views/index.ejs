@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header><h1>Enter the doman name you want to find out about:</h1></header>
+
+    <form action="./" method="post">
+      <label for="Domain">Domain</label>
+      <input type="text" name="Domain" />
+    </form>
+
+    <% if (locals.data.domain) {%>
+    <div class="data-bg1">
+      <ul>
+        <% for (var i=0 ;i<data.arrayIp.length;i++ ) { %>
+    
+          <li><%= data.arrayIp %>  <%= data.arrayIp[i] %></li>
+          
+    <% }} %>
+      </ul>
+      
+    </div>
+      <div class="data-bg2">
+        <ul>
+          <% for (var i=0 ;i<data.arrayDom.length;i++ ) { %>
+      
+            <li><%= data.array %>  <%= data.arrayIp[i] %></li>
+            
+      <% } %>
+        </ul>
+        
+      </div>
+<% } %>
+    
+
+    <script src="./main.js"></script>
+  </body>
+</html>
