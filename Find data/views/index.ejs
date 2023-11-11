@@ -9,27 +9,28 @@
   <body>
     <header><h1>Enter the doman name you want to find out about:</h1></header>
 
-    <form action="./" method="post">
-      <label for="Domain">Domain</label>
-      <input type="text" name="Domain" />
+    <form action="/" method="post">
+      <label for="domain">Domain</label>
+      <input type="text" name="domain" />
+      <input type="submit" name="submit">
     </form>
 
-    <% if (locals.data.domain) {%>
+    <% if (locals.data.ip) {%>
     <div class="data-bg1">
       <ul>
-        <% for (var i=0 ;i<data.arrayIp.length;i++ ) { %>
+        <% for (var i=0 ;i<data.arrays.arrayIp.length;i++ ) { %>
     
-          <li><%= data.arrayIp %>  <%= data.arrayIp[i] %></li>
+          <li><%= data.arrays.arrayIp[i] %>  <%= data[data.arrays.arrayIp[i]] %></li>
           
-    <% }} %>
+    <% } %>
       </ul>
       
     </div>
       <div class="data-bg2">
         <ul>
-          <% for (var i=0 ;i<data.arrayDom.length;i++ ) { %>
+          <% for (var i=0 ;i<data.arrays.arrayDom.length;i++ ) { %>
       
-            <li><%= data.array %>  <%= data.arrayIp[i] %></li>
+            <li><%= data.arrays.arrayDom[i] %>  <%= data.domain[data.arrays.arrayDom[i]] %></li>
             
       <% } %>
         </ul>
