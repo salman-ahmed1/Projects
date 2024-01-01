@@ -10,6 +10,30 @@
       <!-- use for sorting and addin side bar use var for query [] for date,rating ,recent -->
       <div></div>
     </header>
-    <% books.forEach(book => { }); %>
+    <% books.forEach(book => { %>
+    <h4><%= book.title %></h4>
+    <p><%= book.note %></p>
+    <form method="patch" action="/update">
+      <input
+        type="hidden"
+        id="<% book.id %>"
+        name="updatedid"
+        value="<%=book.id %>"
+      />
+      <input
+        type="hidden"
+        id="<% book.id %>edit"
+        name="updateTitle"
+        value="<%=book.title %>"
+      />
+      <input
+        type="hidden"
+        name="updateComment"
+        value="<%=book.comment%>"
+        id="<% book.id %>edit"
+      />
+    </form>
+
+    <%}); %>
   </body>
 </html>

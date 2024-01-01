@@ -14,8 +14,12 @@ const db = new pg.Client({
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+db.connect();
+
+let books = [{ id: 1, title: "harry potash", comment: "Haram" }];
+
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("index.ejs", books);
 });
 
 app.listen(port, () => {
