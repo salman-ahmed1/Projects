@@ -4,15 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="public/style.css" />
   </head>
   <body>
     <header>
       <!-- use for sorting and addin side bar use var for query [] for date,rating ,recent -->
       <div></div>
     </header>
+    <nav class="nav-side">
+      <form action="/sort" method="post">
+        <label for="rating">Rating</label
+        ><input type="radio" name="rating" value="byRating" id="" />
+        <label for="date">Date</label
+        ><input type="radio" name="byDate" value="byDate" id="" />
+      </form>
+    </nav>
+
     <% books.forEach(book => { %>
+    <label for="title">Title</label>
     <h4><%= book.title %></h4>
-    <p><%= book.note %></p>
+    <br />
+    <label for="comment">Comment</label>
+    <p><%= book.comment %></p>
+    <br />
+    <label for="rating">Rating</label>
+    <p><%= book.rating %></p>
+
     <form method="patch" action="/update">
       <input
         type="hidden"
@@ -20,12 +37,21 @@
         name="updatedid"
         value="<%=book.id %>"
       />
+      <label hidden id="<%=book.id%>edit" for="title">Title</label>
       <input
         type="hidden"
         id="<% book.id %>edit"
         name="updateTitle"
         value="<%=book.title %>"
       />
+      <label for="rating" hidden id="<%= book.id %>edit">Rating</label>
+      <input
+        type="hidden"
+        name="updateRating"
+        value="<%=book.rating%>"
+        id="<% book.id %>edit"
+      />
+      <label for="comment" hidden id="<%= book.id %>edit">Comment</label>
       <input
         type="hidden"
         name="updateComment"

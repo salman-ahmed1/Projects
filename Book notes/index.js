@@ -1,4 +1,4 @@
-import { Express } from "express";
+import express from "express";
 import pg from "pg";
 import bodyParser from "body-parser";
 import axios from "axios";
@@ -16,10 +16,17 @@ app.use(express.static("public"));
 
 db.connect();
 
-let books = [{ id: 1, title: "harry potash", comment: "Haram" }];
+var list = [
+  {
+    id: 1,
+    title: "harry potash",
+    comment: "Haram very bad magic book avoid if possible",
+    rating: 0.1,
+  },
+];
 
 app.get("/", (req, res) => {
-  res.render("index.ejs", books);
+  res.render("index.ejs", { books: list });
 });
 
 app.listen(port, () => {
