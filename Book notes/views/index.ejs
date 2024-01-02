@@ -15,16 +15,22 @@
       <nav class="nav-side">
         <!-- side nav for sort -->
         <form action="/sort" method="post">
-          <label for="mark">Rating</label
-          ><input type="radio" name="mark" value="byRating" id="" />
-          <label for="date">Date</label
-          ><input type="radio" name="byDate" value="byDate" id="" />
+          <div>
+            <label for="mark">Rating</label
+            ><input type="radio" name="mark" value="byRating" id="" />
+          </div>
+          <div>
+            <label for="date">Date</label
+            ><input type="radio" name="byDate" value="byDate" id="" />
+          </div>
         </form>
       </nav>
       <div class="content">
         <!-- book list for display -->
         <% books.forEach(book => { %>
-        <h4><%= book.title %></h4>
+        <hr />
+
+        <h4 id="<%=book.id%>"><%= book.title %></h4>
         <br />
 
         <p>Rating <b><%= book.mark %></b></p>
@@ -36,7 +42,7 @@
           <!-- saved id to interreact with database  -->
           <input
             type="hidden"
-            id="<% book.id %>"
+            id="<% book.id %>edit"
             name="updatedid"
             value="<%=book.id %>"
           />
@@ -62,8 +68,9 @@
             id="<% book.id %>edit"
           />
         </form>
+
+        <%}); %>
       </div>
-      <%}); %>
     </main>
     <form action="/" method="post">
       <button class="add-btn">+</button>

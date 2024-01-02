@@ -3,12 +3,13 @@
   margin: 0;
   box-sizing: border-box;
 }
-.nav-side {
+.nav-side > form {
   /* side nav beside booklist */
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-
+  gap: 1rem;
+}
+.nav-side {
   border-right: 0.1rem solid black;
 }
 main {
@@ -22,13 +23,23 @@ main {
   /* book list */
   grid-column: span 4;
 }
+h4 {
+  margin: 1rem 0;
+}
+hr {
+  margin: 1rem 0;
+}
 .add-btn {
-  position: static;
-  bottom: 2rem;
-  right: 1rem;
-  padding: 1rem;
+  cursor: pointer;
+  font-size: 3rem;
+  aspect-ratio: 5/1;
+  position: fixed;
+  color: white;
+  bottom: 5rem;
+  right: 4rem;
+  padding: 0.5rem;
   border-style: none;
-  border-radius: 50%;
+  border-radius: 20%;
   background-color: blueviolet;
 }
 /* 7:35 */

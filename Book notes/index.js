@@ -42,13 +42,13 @@ app.post("/", (req, res) => {
   res.render("new.ejs");
 });
 // add new things to database
-app.post("/new", (req, res) => {
+app.post("/new", async (req, res) => {
   try {
-    db.query("INSERT INTO list(title,comment) VALUES($1,$2)", [
+    await db.query("INSERT INTO list(title,comment) VALUES($1,$2)", [
       req.body.title,
       req.body.comment,
     ]);
-    db.query("INSERT INTO rating(mark) VALUES($1)", [req.body.rating]);
+    db.query("INSERT INTO rating(mark) VALUES($1)", [req.body.mark]);
   } catch (error) {}
   res.redirect("/");
 });
