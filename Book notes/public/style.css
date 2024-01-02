@@ -1,0 +1,34 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.nav-side {
+  /* side nav beside booklist */
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  border-right: 0.1rem solid black;
+}
+main {
+  /* book list and nav */
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+.content {
+  /* book list */
+  grid-column: span 4;
+}
+.add-btn {
+  position: static;
+  bottom: 2rem;
+  right: 1rem;
+  padding: 1rem;
+  border-style: none;
+  border-radius: 50%;
+  background-color: blueviolet;
+}
+/* 7:35 */

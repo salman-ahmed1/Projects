@@ -19,16 +19,39 @@ db.connect();
 var list = [
   {
     id: 1,
-    title: "harry potash",
-    comment: "Haram very bad magic book avoid if possible",
-    rating: 0.1,
+    title: "পেয়ে গেল সে সারটিফিকেট",
+    comment: "খুবই ভাল বই ",
+    rating: "১০",
   },
 ];
 
-app.get("/", (req, res) => {
-  res.render("index.ejs", { books: list });
+app.get("/", async (req, res) => {
+  try {
+    const result = await db.query(
+      "SELECT list.title,list.comment,rating.mark FROM rating JOIN list ON list.id = rating.list_id"
+    );
+    console.log(result.rows);
+    res.render("index.ejs", { books: result.rows });
+  } catch (err) {
+    console.log(err);
+    res.render("index.ejs", list);
+  }
 });
-
+app.post("/", (req, res) => {
+  // render window to do post new thigns to list
+  res.render("new.ejs");
+});
+// add new things to database
+app.post("/new", (req, res) => {
+  try {
+    db.query("INSERT INTO list(title,comment) VALUES($1,$2)", [
+      req.body.title,
+      req.body.comment,
+    ]);
+    db.query("INSERT INTO rating(mark) VALUES($1)", [req.body.rating]);
+  } catch (error) {}
+  res.redirect("/");
+});
 app.listen(port, () => {
   console.log("server runing at " + port);
 });
