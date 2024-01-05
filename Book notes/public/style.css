@@ -10,17 +10,22 @@
   gap: 1rem;
 }
 .nav-side {
-  border-right: 0.1rem solid black;
+  background-color: #d0ffb4;
+  /* border-right: 0.1rem solid black; */
+  padding: 3rem;
 }
 main {
   /* book list and nav */
   padding: 2rem;
+  padding-left: 0;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
 }
 .content {
   /* book list */
+  background-color: bisque;
+  padding: 2rem;
   grid-column: span 4;
 }
 h4 {
