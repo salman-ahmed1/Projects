@@ -24,19 +24,26 @@ var list = [
     rating: "১০",
   },
 ];
-
+var sort = "list.id";
+var by = "ASC";
 app.get("/", async (req, res) => {
   try {
     const result = await db.query(
-      "SELECT list.title,list.comment,rating.mark FROM rating JOIN list ON list.id = rating.list_id"
+      "SELECT list.title,list.comment,rating.mark FROM rating JOIN list ON list.id = rating.list_id ORDER BY $1 ||' '|| $2",
+      [sort, by]
     );
     console.log(result.rows);
     res.render("index.ejs", { books: result.rows });
   } catch (err) {
     console.log(err);
-    res.render("index.ejs", list);
+    res.render("index.ejs", { books: list });
   }
 });
+app.post("/sort", (req, res) => {
+  sort = req.body.sort;
+  by = "DESC";
+});
+
 app.post("/", (req, res) => {
   // render window to do post new thigns to list
   res.render("new.ejs");
