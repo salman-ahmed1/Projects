@@ -26,12 +26,22 @@ var list = [
 ];
 var sort = "list.id";
 var by = "ASC";
+function getInfo(sort, by) {
+  return (
+    "SELECT list.title,list.comment,rating.mark FROM rating JOIN list ON list.id = rating.list_id ORDER BY " +
+    sort +
+    " " +
+    by
+  );
+}
+
 app.get("/", async (req, res) => {
   try {
-    const result = await db.query(
-      "SELECT list.title,list.comment,rating.mark FROM rating JOIN list ON list.id = rating.list_id ORDER BY $1 ||' '|| $2",
-      [sort, by]
-    );
+    const result = await db.query(getInfo(sort, by));
+    console.log(sort);
+    // if (sort == "rating.mark") {
+    //   result.rows.reverse();
+    // }
     console.log(result.rows);
     res.render("index.ejs", { books: result.rows });
   } catch (err) {
@@ -41,7 +51,14 @@ app.get("/", async (req, res) => {
 });
 app.post("/sort", (req, res) => {
   sort = req.body.sort;
-  by = "DESC";
+  if (sort == "mark") {
+    by = "DESC";
+  } else {
+    by = "ASC";
+  }
+
+  console.log(sort + "  sor ");
+  res.redirect("/");
 });
 
 app.post("/", (req, res) => {

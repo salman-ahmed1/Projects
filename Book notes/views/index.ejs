@@ -15,14 +15,23 @@
       <nav class="nav-side">
         <!-- side nav for sort -->
         <form action="/sort" method="post">
-          <div>
-            <label for="mark">Rating</label
-            ><input type="radio" name="sort" form value="list.id" id="" />
-          </div>
-          <div>
-            <label for="date">Date</label
-            ><input type="radio" name="sort" value="mark" id="" />
-          </div>
+          <label for="mark"
+            >Rating<input
+              type="radio"
+              onchange="this.form.submit()"
+              name="sort"
+              value="mark"
+              id=""
+          /></label>
+
+          <label for="date"
+            >Date<input
+              type="radio"
+              onchange="this.form.submit()"
+              name="sort"
+              value="list.id"
+              id=""
+          /></label>
         </form>
       </nav>
       <div class="content">
@@ -75,7 +84,7 @@
     <form action="/" method="post">
       <button class="add-btn">+</button>
     </form>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./main.js"></script>
   </body>
 </html>
