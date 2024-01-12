@@ -43,7 +43,7 @@ app.get("/", async (req, res) => {
     //   result.rows.reverse();
     // }
     console.log(result.rows);
-    res.render("index.ejs", { books: result.rows });
+    res.render("index.ejs", { books: result.rows, sort });
   } catch (err) {
     console.log(err);
     res.render("index.ejs", { books: list });
